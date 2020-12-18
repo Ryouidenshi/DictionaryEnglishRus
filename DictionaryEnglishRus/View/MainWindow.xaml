@@ -1,0 +1,69 @@
+﻿<Window x:Class="DictionaryEnglishRus.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DictionaryEnglishRus.View"
+        xmlns:viewmodel="clr-namespace:DictionaryEnglishRus.ViewModel"
+        mc:Ignorable="d" 
+        Title="Менюшка" Height="450" Width="800"
+        Background="BurlyWood" ResizeMode="NoResize">
+    <Window.DataContext>
+        <viewmodel:ViewModelHash/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.Effect>
+            <DropShadowEffect Color="#FF574C45" RenderingBias="Quality" ShadowDepth="4"/>
+        </Grid.Effect>
+        <Button Name="ans" Content="Answer" Margin="299,302,299,27" BorderBrush="#FFF51212" Foreground="Black" FontFamily="Informal Roman" FontSize="60" Click="Answer">
+            <Button.Effect>
+                <DropShadowEffect Color="White" Direction="313" Opacity="0.86" RenderingBias="Quality" ShadowDepth="4"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FF18083C" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <TextBlock Margin="63,23,-92,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="125" Foreground="#FF936363" FontFamily="ObelixPro" FontSize="30" TextDecorations="{x:Null}"><Run Foreground="#FFFF1348" Text="    "/><Run Foreground="#FFFF1348" Text="В"/><Run Foreground="#FFFF4D31" Text="ы"/><Run Foreground="#FF19B435" Text="б"/><Run Foreground="#FFDCFB16" Text="Е"/><Run Foreground="#FF165697" Text="р"/><Run Foreground="#FF7E70AE" Text="и"/><Run Text=" "/><Run Text="С"/><Run Foreground="#FF89F1CB" Text="П"/><Run Foreground="#FF267DB9" Text="О"/><Run Foreground="#FF61B0FF" Text="С"/><Run Foreground="#FF241846" Text="О"/><Run Foreground="#FF19B435" Text="б, "/><Run Foreground="#FFE63131" Text="К"/><Run Foreground="#FFA62929" Text="О"/><Run Foreground="#FFD9EE0B" Text="Т"/><Run Foreground="#FF6796A4" Text="О"/><Run Foreground="#FF2D4995" Text="Р"/><Run Foreground="#FF67AC22" Text="Ы"/><Run Foreground="#FF4DD625" Text="М "/><Run Foreground="#FF179545" Text="Х"/><Run Foreground="#FF486FB4" Text="О"/><Run Foreground="#FFC1D124" Text="Ч"/><Run Foreground="#FF33518F" Text="Е"/><Run Foreground="#FF3FBF32" Text="Ш"/><Run Foreground="#FF40257A" Text="Ь"/><Run Foreground="#FF40257A" Text=" "/><Run Text=" "/><Run Text="  &#x9;&#x9;&#x9;"/><Run Text="Р"/><Run Foreground="#FF304B08" Text="Е"/><Run Foreground="#FF6C6393" Text="АЛ"/><Run Foreground="#FF341818" Text="И"/><Run Foreground="#FF1EA630" Text="З"/><Run Foreground="#FFBD9F9F" Text="О"/><Run Foreground="#FF4B4242" Text="В"/><Run Foreground="#FF83E027" Text="А"/><Run Foreground="#FF0C2966" Text="Т"/><Run Foreground="#FF6E1F1F" Text="Ь"/><LineBreak/><Run Foreground="#FF6E1F1F"/><Run Text=" "/><Run Text="&#x9;"/><Run Text="А"/><Run Foreground="#FF23610C" Text="Н"/><Run Foreground="#FF488569" Text="Г"/><Run Foreground="#FF80EA59" Text="Л"/><Run Foreground="#FF73781A" Text="О"/><Run Foreground="#FFE2DC9E" Text="-Я"/><Run Foreground="#FF3359DA" Text="З"/><Run Foreground="#FF89F1CB" Text="Ы"/><Run Foreground="#FF2C6BDA" Text="ч"/><Run Foreground="#FF7FCF0C" Text="Н"/><Run Foreground="#FFDEE640" Text="Ы"/><Run Foreground="#FFF31818" Text="й"/><Run Text=" "/><Run Text="С"/><Run Foreground="#FF5E4DAC" Text="Л"/><Run Foreground="#FF839C5F" Text="О"/><Run Foreground="#FF25AEAE" Text="В"/><Run Foreground="#FF728CB2" Text="А"/><Run Foreground="#FF87F030" Text="Р"/><Run Foreground="#FF4B3BB0" Text="Ь"/><Run Foreground="#FF250707" Text="."/></TextBlock>
+        <Button Command="{Binding PlayMusic}" Content="Relax, my boy" HorizontalAlignment="Left" Margin="553,369,0,0" VerticalAlignment="Top" Width="241" Height="53" FontFamily="Palace Script MT" FontSize="48" BorderBrush="#FF54574C" Foreground="#FF611B1B" FontWeight="Bold">
+            <Button.Effect>
+                <DropShadowEffect Color="#FF897474" ShadowDepth="5"/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FFFF3374" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button  HorizontalAlignment="Left" Margin="80,152,0,0" VerticalAlignment="Top" Width="284" Height="128" BorderBrush="White" Foreground="Black" FontSize="56" FontFamily="Kunstler Script" Click="First">
+            <TextBlock Name="first" Text="First method (Trie)" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FFBD154A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button  HorizontalAlignment="Right" Margin="0,152,80,0" VerticalAlignment="Top" Width="284" Height="128" BorderBrush="White" Foreground="Black" FontSize="56" FontFamily="Kunstler Script" Click="Second">
+            <TextBlock Name="second" Text="Second method (HashTable)" TextWrapping="Wrap" TextAlignment="Center"/>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB" Offset="0.5"/>
+                    <GradientStop Color="#FFDDDDDD" Offset="0.5"/>
+                    <GradientStop Color="#FFBD154A" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Window>
