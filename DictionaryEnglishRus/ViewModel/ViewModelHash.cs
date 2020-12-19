@@ -30,12 +30,20 @@ namespace DictionaryEnglishRus.ViewModel
 
         public ViewModelHash()
         {
-            var tupleTreeAndTime = new MassiveWords().GetHashTableAndTime("../../Model/Words.txt");
-            HashTable = tupleTreeAndTime.Item1;
+            var tupleTableAndTime = new MassiveWords().GetHashTableAndTime("../../Model/Words.txt");
+            var words = tupleTableAndTime;
+            HashTable = new Model.HashTable(words.Count());
+            var sp = new Stopwatch();
+            sp.Start();
+            foreach (var item in words)
+            {
+                HashTable.Insert(item);
+            }
+            sp.Stop();
             OpHistory = new ObservableCollection<OpHistoryItem>();
             var massiveRussian = new MassiveChars("Russian").GetMassiveChars();
             var massiveEnglish = new MassiveChars("English").GetMassiveChars();
-            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + tupleTreeAndTime.Item3 + " слов - " + tupleTreeAndTime.Item2 + " ms."));
+            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + words.Count() + " слов - " + sp.ElapsedMilliseconds + " ms."));
             mp.Open(new Uri("../../Model/music.mp3", UriKind.RelativeOrAbsolute));
             var flag = false;
             Add = new DelegateCommand(() =>
@@ -106,6 +114,7 @@ namespace DictionaryEnglishRus.ViewModel
                 {
                     if (CheckerForEnglish(TranslateValue.ToCharArray()))
                     {
+
                         if (HashTable.Search(TranslateValue))
                         {
                             Word w;
@@ -173,7 +182,7 @@ namespace DictionaryEnglishRus.ViewModel
 
     public class MassiveWords
     {
-        public Tuple<Model.HashTable, long,int> GetHashTableAndTime(string path)
+        public Word[] GetHashTableAndTime(string path)
         {
             using (var streamReader = new StreamReader(path, Encoding.Default))
             {
@@ -186,14 +195,14 @@ namespace DictionaryEnglishRus.ViewModel
                     allWords.Add(line);
                     countWords++;
                 }
-                var hashTable = new Model.HashTable((countWords/2)+1);
+                var words = new List<Word>();
                 stopwatch.Start();
                 for (int i = 0; i < countWords; i += 2)
                 {
-                    hashTable.Insert(new Word(allWords[i], allWords[i + 1])); 
+                    words.Add(new Word(allWords[i], allWords[i + 1]));
                 }
                 stopwatch.Stop();
-                return System.Tuple.Create(hashTable, stopwatch.ElapsedMilliseconds, countWords / 2);
+                return words.ToArray();
             }
         }
     }
