@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DictionaryEnglishRus.Model
 {
@@ -52,12 +46,12 @@ namespace DictionaryEnglishRus.Model
             return false;
         }
 
-        public bool Search(string movieName, out Word found)
+        public bool Search(string key, out Word found)
         {
-            long hash = GetHash(movieName);
+            long hash = GetHash(key);
             for (long i = hash; i < Values.Length; i++)
             {
-                if (Values[i] != null && movieName.Equals(Values[i].Key))
+                if (Values[i] != null && key.Equals(Values[i].Key))
                 {
                     found = Values[i];
                     return true;
@@ -67,12 +61,12 @@ namespace DictionaryEnglishRus.Model
             return false;
         }
 
-        public bool Search(string movieName)
+        public bool Search(string key)
         {
-            long hash = GetHash(movieName);
+            long hash = GetHash(key);
             for (long i = hash; i < Values.Length; i++)
             {
-                if (Values[i] != null && movieName.Equals(Values[i].Key))
+                if (Values[i] != null && key.Equals(Values[i].Key))
                 {
                     return true;
                 }
@@ -83,10 +77,10 @@ namespace DictionaryEnglishRus.Model
         public long GetHash(string key)
         {
             long hash = 0;
-            var koef = 4228;
+            var koef = 10003;
             foreach (char ch in key)
             {
-                hash += (long)(Convert.ToInt16(ch) * koef);
+                hash += (long)(Convert.ToInt16(ch)*koef);
             }
             while (hash > MaxCount)
                 hash /= 2;

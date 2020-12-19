@@ -1,6 +1,5 @@
 ﻿using DictionaryEnglishRus.Model;
 using DictionaryEnglishRus.View;
-using DocumentFormat.OpenXml.Spreadsheet;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
@@ -10,7 +9,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Media;
 using static DictionaryEnglishRus.Model.HashTable;
 
@@ -141,6 +139,7 @@ namespace DictionaryEnglishRus.ViewModel
                 }
             });
             HashTable.Search("apple");
+            HashTable.Search("worm");
             HashTable.Remove("warm");
             HashTable.Remove("yourself");
             HashTable.Insert(new Word("Test", "Тест"));
@@ -187,7 +186,7 @@ namespace DictionaryEnglishRus.ViewModel
                     allWords.Add(line);
                     countWords++;
                 }
-                var hashTable = new Model.HashTable(countWords);
+                var hashTable = new Model.HashTable((countWords/2)+1);
                 stopwatch.Start();
                 for (int i = 0; i < countWords; i += 2)
                 {
