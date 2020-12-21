@@ -30,20 +30,12 @@ namespace DictionaryEnglishRus.ViewModel
 
         public ViewModelHash()
         {
-            var tupleTableAndTime = new MassiveWords().GetHashTableAndTime("../../Model/Words.txt");
-            var words = tupleTableAndTime;
-            HashTable = new Model.HashTable(words.Count());
-            var sp = new Stopwatch();
-            sp.Start();
-            foreach (var item in words)
-            {
-                HashTable.Insert(item);
-            }
-            sp.Stop();
+            HashTable = new MassiveWords().GetHashTableAndTime("../../Model/Words.txt").Item1;
+            var time = new MassiveWords().GetHashTableAndTime("../../Model/Words.txt").Item2;
             OpHistory = new ObservableCollection<OpHistoryItem>();
             var massiveRussian = new MassiveChars("Russian").GetMassiveChars();
             var massiveEnglish = new MassiveChars("English").GetMassiveChars();
-            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + words.Count() + " слов - " + sp.ElapsedMilliseconds + " ms."));
+            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count() + " слов - " + time + " ms."));
             mp.Open(new Uri("../../Model/music.mp3", UriKind.RelativeOrAbsolute));
             var flag = false;
             Add = new DelegateCommand(() =>
@@ -147,8 +139,9 @@ namespace DictionaryEnglishRus.ViewModel
                     flag = false;
                 }
             });
-            HashTable.Search("apple");
-            HashTable.Search("worm");
+            Word wo;
+            HashTable.Search("apple", out wo);
+            HashTable.Search("apple", out wo);
             HashTable.Remove("warm");
             HashTable.Remove("yourself");
             HashTable.Insert(new Word("Test", "Тест"));
@@ -182,7 +175,7 @@ namespace DictionaryEnglishRus.ViewModel
 
     public class MassiveWords
     {
-        public Word[] GetHashTableAndTime(string path)
+        public Tuple<Model.HashTable, long> GetHashTableAndTime(string path)
         {
             using (var streamReader = new StreamReader(path, Encoding.Default))
             {
@@ -195,14 +188,14 @@ namespace DictionaryEnglishRus.ViewModel
                     allWords.Add(line);
                     countWords++;
                 }
-                var words = new List<Word>();
+                var hashTable = new Model.HashTable(countWords);
                 stopwatch.Start();
                 for (int i = 0; i < countWords; i += 2)
                 {
-                    words.Add(new Word(allWords[i], allWords[i + 1]));
+                    hashTable.Insert(new Word(allWords[i], allWords[i + 1]));
                 }
                 stopwatch.Stop();
-                return words.ToArray();
+                return Tuple.Create(hashTable, stopwatch.ElapsedMilliseconds);
             }
         }
     }

@@ -24,7 +24,7 @@ namespace DictionaryEnglishRus.View
             }
             else if (answer == "second")
             {
-                var hashTable = new HashTable();
+                var hashTable = new View.HashTable();
                 hashTable.Show();
                 this.Close();
             }
@@ -35,7 +35,7 @@ namespace DictionaryEnglishRus.View
             ans.Visibility = Visibility.Visible;
             answer = "first";
             second.Text = "Second method (HashTable)";
-            first.Text = "YAYAYA";
+            first.Text = "KREVETKA";
         }
 
         private void Second(object sender, RoutedEventArgs e)
@@ -43,7 +43,7 @@ namespace DictionaryEnglishRus.View
             ans.Visibility = Visibility.Visible;
             answer = "second";
             first.Text = "First method (Trie)";
-            second.Text = "YAYAYA";
+            second.Text = "DEREZHABL";
         }
     }
 }

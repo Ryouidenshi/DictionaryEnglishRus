@@ -7,7 +7,7 @@
         xmlns:viewmodel="clr-namespace:DictionaryEnglishRus.ViewModel"
         mc:Ignorable="d" 
         Title="Менюшка" Height="450" Width="800"
-        Background="BurlyWood" ResizeMode="NoResize">
+        Background="BurlyWood" ResizeMode="NoResize" Icon="icon.png">
     <Window.DataContext>
         <viewmodel:ViewModelHash/>
     </Window.DataContext>
