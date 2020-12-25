@@ -115,6 +115,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Resource Include="Fonts\ObelixPro.TTF" />
+    <Resource Include="Fonts\KunstlerScript.TTF" />
+    <Resource Include="Fonts\InformalRoman.TTF" />
+    <Resource Include="Fonts\PalaceScript.TTF" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -129,7 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Model\music.mp3" />
-    <Resource Include="View\icon.png" />
+    <Resource Include="Model\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

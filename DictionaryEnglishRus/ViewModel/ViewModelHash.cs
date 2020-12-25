@@ -35,7 +35,7 @@ namespace DictionaryEnglishRus.ViewModel
             OpHistory = new ObservableCollection<OpHistoryItem>();
             var massiveRussian = new MassiveChars("Russian").GetMassiveChars();
             var massiveEnglish = new MassiveChars("English").GetMassiveChars();
-            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count() + " слов - " + time + " ms."));
+            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count()/2 + " слов - " + time + " ms."));
             mp.Open(new Uri("../../Model/music.mp3", UriKind.RelativeOrAbsolute));
             var flag = false;
             Add = new DelegateCommand(() =>
@@ -109,10 +109,9 @@ namespace DictionaryEnglishRus.ViewModel
 
                         if (HashTable.Search(TranslateValue))
                         {
-                            Word w;
                             var spForTranslate = new Stopwatch();
                             spForTranslate.Start();
-                            var russianTranslate = HashTable.Search(TranslateValue, out w);
+                            var russianTranslate = HashTable.Search(TranslateValue, out Word w);
                             spForTranslate.Stop();
                             OpHistory.Add(new OpHistoryItem("Перевод слова " + TranslateValue + " - " + w.Value));
                             OpHistory.Add(new OpHistoryItem("Время перевода - " + spForTranslate.ElapsedTicks + " тиков."));
@@ -139,8 +138,7 @@ namespace DictionaryEnglishRus.ViewModel
                     flag = false;
                 }
             });
-            Word wo;
-            HashTable.Search("apple", out wo);
+            HashTable.Search("apple", out Word wo);
             HashTable.Search("apple", out wo);
             HashTable.Remove("warm");
             HashTable.Remove("yourself");

@@ -83,6 +83,11 @@ namespace DictionaryEnglishRus.Model
                 hash += (long)(Convert.ToInt16(ch)*koef);
             }
             while (hash > MaxCount)
+            {
+                hash /= 4;
+            }
+            hash += 400;
+            while (hash > MaxCount)
                 hash /= 2;
             return hash;
         }

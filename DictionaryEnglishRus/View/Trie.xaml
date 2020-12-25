@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DictionaryEnglishRus.View"
         xmlns:viewmodel="clr-namespace:DictionaryEnglishRus.ViewModel"
         mc:Ignorable="d"
-        Title="Dictionary" Height="450" Width="800" Icon="icon.png">
+        Title="Префиксное дерево" Height="450" Width="800" Icon="icon.png">
     <Window.DataContext>
         <viewmodel:ViewModelTrie/>
     </Window.DataContext>
