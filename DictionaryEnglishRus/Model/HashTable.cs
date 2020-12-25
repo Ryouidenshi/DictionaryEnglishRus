@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace DictionaryEnglishRus.Model
 {
@@ -31,6 +33,7 @@ namespace DictionaryEnglishRus.Model
             }
             return false;
         }
+
 
         public bool Remove(string key)
         {
@@ -77,16 +80,11 @@ namespace DictionaryEnglishRus.Model
         public long GetHash(string key)
         {
             long hash = 0;
-            var koef = 10003;
+            var koef = 543254.5234;
             foreach (char ch in key)
             {
-                hash += (long)(Convert.ToInt16(ch)*koef);
+                hash += (long)(Convert.ToInt16(ch) * koef);
             }
-            while (hash > MaxCount)
-            {
-                hash /= 4;
-            }
-            hash += 400;
             while (hash > MaxCount)
                 hash /= 2;
             return hash;

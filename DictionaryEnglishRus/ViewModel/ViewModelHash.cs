@@ -35,7 +35,7 @@ namespace DictionaryEnglishRus.ViewModel
             OpHistory = new ObservableCollection<OpHistoryItem>();
             var massiveRussian = new MassiveChars("Russian").GetMassiveChars();
             var massiveEnglish = new MassiveChars("English").GetMassiveChars();
-            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count()/2 + " слов - " + time + " ms."));
+            OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count()/20 + " слов - " + time + " ms."));
             mp.Open(new Uri("../../Music/music.mp3", UriKind.RelativeOrAbsolute));
             var flag = false;
             Add = new DelegateCommand(() =>
@@ -195,7 +195,7 @@ namespace DictionaryEnglishRus.ViewModel
                     allWords.Add(line);
                     countWords++;
                 }
-                var hashTable = new Model.HashTable(countWords);
+                var hashTable = new Model.HashTable(countWords*10);
                 stopwatch.Start();
                 for (int i = 0; i < countWords; i += 2)
                 {
