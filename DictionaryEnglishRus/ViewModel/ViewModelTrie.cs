@@ -47,9 +47,10 @@ namespace DictionaryEnglishRus.ViewModel
                     OpHistory.Add(new OpHistoryItem("Вы ничего не ввели!"));
                 else
                 {
+                    var spForAdd = new Stopwatch();
                     if (CheckerForEnglishAndRussian(AddValueF.ToCharArray(), AddValueS.ToCharArray()))
                     {
-                        var spForAdd = new Stopwatch();
+                        long time = 0;
                         if (!Tree.ContainsValue(AddValueF))
                         {
                             spForAdd.Start();
@@ -65,7 +66,7 @@ namespace DictionaryEnglishRus.ViewModel
                             spForAdd.Stop();
                             OpHistory.Add(new OpHistoryItem("Слово \"" + AddValueF + "\" перезаписано."));
                         }
-                        OpHistory.Add(new OpHistoryItem("Время добавление/переписывание составило - " + spForAdd.ElapsedTicks + " тиков."));
+                        OpHistory.Add(new OpHistoryItem("Время добавления/переписывания составило - " + spForAdd.ElapsedTicks + " тиков."));
                         RaisePropertyChanged("OpHistory");
                     }
                     else OpHistory.Add(new OpHistoryItem("Первое слово должно быть Английским, а второе Русским!"));
