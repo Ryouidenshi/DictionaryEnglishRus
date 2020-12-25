@@ -132,8 +132,9 @@
     <Resource Include="Model\Words.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\music.mp3" />
-    <Resource Include="Model\icon.png" />
+    <Content Include="Music\beep.mp3" />
+    <Content Include="Music\music.mp3" />
+    <Resource Include="Images\icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

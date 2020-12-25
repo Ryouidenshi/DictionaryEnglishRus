@@ -36,10 +36,13 @@ namespace DictionaryEnglishRus.ViewModel
             var massiveRussian = new MassiveChars("Russian").GetMassiveChars();
             var massiveEnglish = new MassiveChars("English").GetMassiveChars();
             OpHistory.Add(new OpHistoryItem("Время создания хэш таблицы из " + HashTable.Values.Count()/2 + " слов - " + time + " ms."));
-            mp.Open(new Uri("../../Model/music.mp3", UriKind.RelativeOrAbsolute));
+            mp.Open(new Uri("../../Music/music.mp3", UriKind.RelativeOrAbsolute));
             var flag = false;
             Add = new DelegateCommand(() =>
             {
+                var beep = new MediaPlayer();
+                beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+                beep.Play();
                 if (string.IsNullOrWhiteSpace(AddValueF) && !string.IsNullOrWhiteSpace(AddValueS))
                     OpHistory.Add(new OpHistoryItem("Вы не ввели слово на английском, которое хотели добавить!"));
                 else if (!string.IsNullOrWhiteSpace(AddValueF) && string.IsNullOrWhiteSpace(AddValueS))
@@ -74,6 +77,9 @@ namespace DictionaryEnglishRus.ViewModel
             });
             Delete = new DelegateCommand(() =>
             {
+                var beep = new MediaPlayer();
+                beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+                beep.Play();
                 if (string.IsNullOrWhiteSpace(DeleteValue))
                     OpHistory.Add(new OpHistoryItem("Вы ничего не ввели!"));
                 else
@@ -100,6 +106,9 @@ namespace DictionaryEnglishRus.ViewModel
             });
             Translate = new DelegateCommand(() =>
             {
+                var beep = new MediaPlayer();
+                beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+                beep.Play();
                 if (string.IsNullOrWhiteSpace(TranslateValue))
                     OpHistory.Add(new OpHistoryItem("Вы ничего не ввели!"));
                 else

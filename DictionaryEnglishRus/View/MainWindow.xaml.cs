@@ -1,5 +1,6 @@
-﻿using System.Windows;
-
+﻿using System;
+using System.Windows;
+using System.Windows.Media;
 
 namespace DictionaryEnglishRus.View
 {
@@ -14,6 +15,9 @@ namespace DictionaryEnglishRus.View
 
         private void Answer(object sender, RoutedEventArgs e)
         {
+            var beep = new MediaPlayer();
+            beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+            beep.Play();
             if (answer == null)
                 ans.Visibility = Visibility.Hidden;
             if (answer == "first")
@@ -32,6 +36,9 @@ namespace DictionaryEnglishRus.View
 
         private void First(object sender, RoutedEventArgs e)
         {
+            var beep = new MediaPlayer();
+            beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+            beep.Play();
             ans.Visibility = Visibility.Visible;
             answer = "first";
             second.Text = "Second method (HashTable)";
@@ -40,6 +47,9 @@ namespace DictionaryEnglishRus.View
 
         private void Second(object sender, RoutedEventArgs e)
         {
+            var beep = new MediaPlayer();
+            beep.Open(new Uri("../../Music/beep.mp3", UriKind.RelativeOrAbsolute));
+            beep.Play();
             ans.Visibility = Visibility.Visible;
             answer = "second";
             first.Text = "First method (Trie)";

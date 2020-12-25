@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DictionaryEnglishRus.View"
         xmlns:viewmodel="clr-namespace:DictionaryEnglishRus.ViewModel"
         mc:Ignorable="d"
-        Title="Хэш-таблица" Height="450" ResizeMode="NoResize" Width="800" Icon="../Model/icon.png">
+        Title="Хэш-таблица" Height="450" ResizeMode="NoResize" Width="800" Icon="../Images/icon.png">
     <Window.DataContext>
         <viewmodel:ViewModelHash/>
     </Window.DataContext>
