@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DictionaryEnglishRus.View"
         xmlns:viewmodel="clr-namespace:DictionaryEnglishRus.ViewModel"
         mc:Ignorable="d"
-        Title="Хэш-таблица" Height="450" Width="800" Icon="icon.png">
+        Title="Хэш-таблица" Height="450" ResizeMode="NoResize" Width="800" Icon="../Model/icon.png">
     <Window.DataContext>
         <viewmodel:ViewModelHash/>
     </Window.DataContext>
@@ -58,7 +58,7 @@
                 <TextBlock Background="Aqua" FontSize="20" HorizontalAlignment="Left" TextWrapping="Wrap" Text="На русском!" VerticalAlignment="Top" Height="37" Width="115" Grid.Column="2" Margin="32,10,0,0"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Margin="0,0,0,53">
             <DockPanel Grid.Row="0">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
                     <ItemsControl BorderThickness="2" BorderBrush="Black" Background="White"
@@ -77,5 +77,6 @@
                 </ScrollViewer>
             </DockPanel>
         </Grid>
+        <Button Content="Вернуться в главное меню" HorizontalAlignment="Left" Height="62" Margin="510,358,0,0" VerticalAlignment="Top" Width="282" FontFamily="/DictionaryEnglishRus;component/Fonts/#ObelixPro" FontSize="14" FontWeight="Bold" FontStyle="Italic" Click="Button_Click" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

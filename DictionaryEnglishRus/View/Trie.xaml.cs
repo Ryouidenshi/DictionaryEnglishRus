@@ -12,5 +12,12 @@ namespace DictionaryEnglishRus.View
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var mw = new MainWindow();
+            this.Close();
+            mw.Show();
+        }
     }
 }
